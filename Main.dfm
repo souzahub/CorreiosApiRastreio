@@ -57,7 +57,7 @@ object MainForm: TMainForm
     object btCorreio: TStyledButton
       AlignWithMargins = True
       Left = 3
-      Top = 96
+      Top = 115
       Width = 137
       Height = 41
       Align = alTop
@@ -71,15 +71,15 @@ object MainForm: TMainForm
       Caption = 'BUSCA'
       StyleDrawType = btRounded
       StyleFamily = 'Bootstrap'
-      StyleClass = 'Secondary'
       TabOrder = 2
       ExplicitLeft = 24
+      ExplicitTop = 96
       ExplicitWidth = 97
     end
     object btDados: TStyledButton
       AlignWithMargins = True
       Left = 3
-      Top = 143
+      Top = 162
       Width = 137
       Height = 41
       Align = alTop
@@ -93,7 +93,7 @@ object MainForm: TMainForm
       Caption = 'DADOS'
       StyleDrawType = btRounded
       StyleFamily = 'Bootstrap'
-      StyleClass = 'Secondary'
+      StyleClass = 'Warning'
       TabOrder = 3
       ExplicitLeft = 0
       ExplicitTop = 47
@@ -116,15 +116,50 @@ object MainForm: TMainForm
       Caption = 'SAIR'
       StyleDrawType = btRounded
       StyleFamily = 'Bootstrap'
-      StyleClass = 'Danger'
+      StyleClass = 'Dark'
       TabOrder = 4
       ExplicitLeft = 16
       ExplicitTop = 464
     end
+    object Label1: TLabel
+      AlignWithMargins = True
+      Left = 3
+      Top = 3
+      Width = 137
+      Height = 13
+      Align = alTop
+      Alignment = taCenter
+      Caption = 'MINHAS ENCOMENDAS'
+      Color = clBtnText
+      ParentColor = False
+      ExplicitWidth = 111
+    end
+    object Label2: TLabel
+      AlignWithMargins = True
+      Left = 3
+      Top = 622
+      Width = 137
+      Height = 13
+      Align = alBottom
+      Alignment = taCenter
+      Caption = 'By Luan'
+      ExplicitWidth = 38
+    end
+    object Label3: TLabel
+      AlignWithMargins = True
+      Left = 3
+      Top = 603
+      Width = 137
+      Height = 13
+      Align = alBottom
+      Alignment = taCenter
+      Caption = 'Vers'#227'o: 08.01.24'
+      ExplicitWidth = 84
+    end
     object img_pessoas: TImage
       AlignWithMargins = True
       Left = 3
-      Top = 10
+      Top = 29
       Width = 137
       Height = 73
       Margins.Top = 10

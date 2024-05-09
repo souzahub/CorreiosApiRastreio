@@ -8,19 +8,19 @@ uses
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.UI.Intf,
   FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.VCLUI.Wait,
   Data.DB, FireDAC.Comp.Client, FireDAC.Comp.DataSet, FireDAC.Phys.FB,
-  FireDAC.Phys.FBDef, FireDAC.Comp.UI;
+  FireDAC.Phys.FBDef, FireDAC.Comp.UI, FireDAC.ConsoleUI.Wait;
 
 type
   TdmDados = class(TDataModule)
     FDAuxiliar: TFDQuery;
     SqlConexao: TFDConnection;
     FDEncomenda: TFDQuery;
+    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     FDEncomendaID: TIntegerField;
     FDEncomendaCODIGO: TStringField;
     FDEncomendaNOME: TStringField;
     FDEncomendaCATEGORIA: TStringField;
     FDEncomendaEMPRESA: TStringField;
-    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     FDEncomendaSTATUS: TStringField;
     FDEncomendaDATA: TDateField;
     procedure DataModuleCreate(Sender: TObject);

@@ -2,10 +2,10 @@ object formEncomenda: TformEncomenda
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
-  BorderStyle = bsDialog
+  BorderStyle = bsNone
   Caption = 'Encomendas - tecla ESC para sair'
-  ClientHeight = 454
-  ClientWidth = 882
+  ClientHeight = 483
+  ClientWidth = 888
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -23,8 +23,8 @@ object formEncomenda: TformEncomenda
   object PnPrincipal: TCardPanel
     Left = 0
     Top = 0
-    Width = 882
-    Height = 454
+    Width = 888
+    Height = 483
     Align = alClient
     ActiveCard = CardPesquisa
     Caption = 'PnPrincipal'
@@ -32,20 +32,20 @@ object formEncomenda: TformEncomenda
     object CardCadastro: TCard
       Left = 1
       Top = 1
-      Width = 880
-      Height = 452
+      Width = 886
+      Height = 481
       Caption = 'CardCadastro'
       CardIndex = 0
       TabOrder = 0
       object Panel1: TPanel
         Left = 0
-        Top = 378
-        Width = 880
+        Top = 407
+        Width = 886
         Height = 74
         Align = alBottom
         TabOrder = 0
         object btCancelar: TButton
-          Left = 792
+          Left = 798
           Top = 1
           Width = 87
           Height = 72
@@ -61,7 +61,7 @@ object formEncomenda: TformEncomenda
           OnClick = btCancelarClick
         end
         object btSalvar: TButton
-          Left = 705
+          Left = 711
           Top = 1
           Width = 87
           Height = 72
@@ -80,8 +80,8 @@ object formEncomenda: TformEncomenda
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 880
-        Height = 378
+        Width = 886
+        Height = 407
         Align = alClient
         Color = clGray
         ParentBackground = False
@@ -244,15 +244,15 @@ object formEncomenda: TformEncomenda
     object CardPesquisa: TCard
       Left = 1
       Top = 1
-      Width = 880
-      Height = 452
+      Width = 886
+      Height = 481
       Caption = 'CardPesquisa'
       CardIndex = 1
       TabOrder = 1
       object pnPesquisa: TPanel
         Left = 0
         Top = 0
-        Width = 880
+        Width = 886
         Height = 73
         Align = alTop
         BevelOuter = bvNone
@@ -265,15 +265,15 @@ object formEncomenda: TformEncomenda
           Caption = 'Pesquisar'
         end
         object lbCod: TLabel
-          Left = 238
+          Left = 222
           Top = 12
           Width = 32
           Height = 19
           Caption = 'xxxx'
         end
         object edPesquisar: TEdit
-          Left = 8
-          Top = 37
+          Left = 10
+          Top = 38
           Width = 297
           Height = 29
           CharCase = ecUpperCase
@@ -291,7 +291,7 @@ object formEncomenda: TformEncomenda
           OnKeyPress = edPesquisarKeyPress
         end
         object btPesquisar: TButton
-          Left = 706
+          Left = 712
           Top = 0
           Width = 87
           Height = 73
@@ -308,7 +308,7 @@ object formEncomenda: TformEncomenda
           OnClick = btPesquisarClick
         end
         object btLimpar: TButton
-          Left = 793
+          Left = 799
           Top = 0
           Width = 87
           Height = 73
@@ -336,19 +336,29 @@ object formEncomenda: TformEncomenda
           TabOrder = 3
           OnClick = rgStatusClick
         end
+        object DBNavigator1: TDBNavigator
+          Left = 313
+          Top = 40
+          Width = 128
+          Height = 25
+          DataSource = dsEncomenda
+          VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
+          TabOrder = 4
+        end
       end
       object pnPesquisaBotoes: TPanel
         Left = 0
-        Top = 378
-        Width = 880
+        Top = 407
+        Width = 886
         Height = 74
         Align = alBottom
         TabOrder = 1
         object btFechar: TButton
-          Left = 784
+          Left = 790
           Top = 1
           Width = 95
           Height = 72
+          Cursor = crHandPoint
           Margins.Top = 15
           Margins.Bottom = 15
           Align = alRight
@@ -365,6 +375,7 @@ object formEncomenda: TformEncomenda
           Top = 1
           Width = 87
           Height = 72
+          Cursor = crHandPoint
           Margins.Top = 15
           Margins.Bottom = 15
           Align = alLeft
@@ -381,6 +392,7 @@ object formEncomenda: TformEncomenda
           Top = 1
           Width = 87
           Height = 72
+          Cursor = crHandPoint
           Margins.Top = 15
           Margins.Bottom = 15
           Align = alLeft
@@ -397,6 +409,7 @@ object formEncomenda: TformEncomenda
           Top = 1
           Width = 87
           Height = 72
+          Cursor = crHandPoint
           Margins.Top = 15
           Margins.Bottom = 15
           Align = alLeft
@@ -413,6 +426,7 @@ object formEncomenda: TformEncomenda
           Top = 1
           Width = 87
           Height = 72
+          Cursor = crHandPoint
           Margins.Top = 15
           Margins.Bottom = 15
           Align = alLeft
@@ -429,6 +443,7 @@ object formEncomenda: TformEncomenda
           Top = 1
           Width = 188
           Height = 72
+          Cursor = crHandPoint
           Margins.Top = 15
           Margins.Bottom = 15
           Align = alLeft
@@ -445,16 +460,16 @@ object formEncomenda: TformEncomenda
       object pnGrid: TPanel
         Left = 0
         Top = 73
-        Width = 880
-        Height = 305
+        Width = 886
+        Height = 334
         Align = alClient
         TabOrder = 2
         object DBGrid1: TDBGrid
           AlignWithMargins = True
           Left = 4
           Top = 4
-          Width = 872
-          Height = 297
+          Width = 878
+          Height = 326
           Align = alClient
           DataSource = dsEncomenda
           Font.Charset = DEFAULT_CHARSET

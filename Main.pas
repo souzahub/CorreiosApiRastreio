@@ -31,6 +31,9 @@ type
     btCorreio: TStyledButton;
     btDados: TStyledButton;
     StyledButton1: TStyledButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
     img_pessoas: TImage;
     procedure FormCreate(Sender: TObject);
     procedure btBuscarClick(Sender: TObject);
@@ -101,6 +104,7 @@ procedure TMainForm.btDadosClick(Sender: TObject);
 begin
   dmDados.xAtivaBuscaCodigo := False; //  valor inicial
   formEncomenda.btFechar.Caption := 'Fechar';
+  formEncomenda.btFechar.ImageIndex := 2;
   formEncomenda.ShowModal;
   Exit;
 end;
@@ -109,6 +113,7 @@ procedure TMainForm.btCorreioClick(Sender: TObject);
 begin
   dmDados.xAtivaBuscaCodigo := True;
   formEncomenda.btFechar.Caption := 'Buscar';
+  formEncomenda.btFechar.ImageIndex := 8;
   formCorreios.ShowModal;
   Exit;
 end;

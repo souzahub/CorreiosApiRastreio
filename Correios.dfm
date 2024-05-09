@@ -4,8 +4,8 @@ object formCorreios: TformCorreios
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Rastreio Encomendas'
-  ClientHeight = 433
-  ClientWidth = 1079
+  ClientHeight = 435
+  ClientWidth = 897
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,15 +20,17 @@ object formCorreios: TformCorreios
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1079
-    Height = 433
+    Width = 897
+    Height = 435
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitWidth = 1079
+    ExplicitHeight = 433
     object btBuscar: TStyledButton
       Left = 200
       Top = 24
-      Width = 97
+      Width = 105
       Height = 25
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -37,7 +39,7 @@ object formCorreios: TformCorreios
       Font.Style = []
       OnClick = btBuscarClick
       ParentFont = False
-      Caption = 'Rastrear'
+      Caption = 'Rastrear manual'
       StyleDrawType = btRounded
       StyleFamily = 'Bootstrap'
       TabOrder = 1
@@ -58,10 +60,11 @@ object formCorreios: TformCorreios
       Caption = 'BY : https://linketrack.com'
     end
     object btCorreio: TStyledButton
-      Left = 945
+      Left = 763
       Top = 9
       Width = 130
       Height = 54
+      DragCursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12
@@ -75,6 +78,14 @@ object formCorreios: TformCorreios
       StyleClass = 'Success'
       TabOrder = 3
     end
+    object label001: TLabel
+      Left = 376
+      Top = 8
+      Width = 31
+      Height = 13
+      Caption = 'Label2'
+      Visible = False
+    end
     object edCodRestreio: TEdit
       Left = 16
       Top = 28
@@ -86,16 +97,18 @@ object formCorreios: TformCorreios
     end
     object pnGrid: TPanel
       Left = 0
-      Top = 69
-      Width = 1079
+      Top = 71
+      Width = 897
       Height = 364
       Align = alBottom
       TabOrder = 2
+      ExplicitTop = 69
+      ExplicitWidth = 1079
       object DBGrid1: TDBGrid
         AlignWithMargins = True
         Left = 4
         Top = 4
-        Width = 1071
+        Width = 889
         Height = 356
         Align = alClient
         DataSource = dsBusca
@@ -117,34 +130,48 @@ object formCorreios: TformCorreios
           item
             Expanded = False
             FieldName = 'data'
-            Width = 144
+            Title.Caption = 'Data'
+            Width = 104
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'hora'
-            Width = 105
+            Title.Caption = 'Hora'
+            Width = 71
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'local'
-            Width = 437
+            Title.Caption = 'Local'
+            Width = 191
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'status'
-            Width = 353
+            Title.Caption = 'Status'
+            Width = 500
             Visible = True
           end>
       end
     end
+    object Button1: TButton
+      Left = 376
+      Top = 26
+      Width = 75
+      Height = 25
+      Caption = 'Task'
+      TabOrder = 4
+      Visible = False
+      OnClick = Button1Click
+    end
   end
   object dsBusca: TDataSource
     DataSet = FDMemTable1
-    Left = 256
-    Top = 264
+    Left = 264
+    Top = 248
   end
   object RESTClient1: TRESTClient
     Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
@@ -173,7 +200,7 @@ object formCorreios: TformCorreios
     FieldDefs = <>
     Response = RESTResponse1
     Left = 176
-    Top = 328
+    Top = 344
   end
   object FDMemTable1: TFDMemTable
     FieldDefs = <>

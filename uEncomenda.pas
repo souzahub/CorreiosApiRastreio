@@ -45,6 +45,7 @@ type
     btAtualiza: TButton;
     rgStatus: TRadioGroup;
     lbCod: TLabel;
+    DBNavigator1: TDBNavigator;
     procedure btIncluirClick(Sender: TObject);
     procedure btAlterarClick(Sender: TObject);
     procedure btFecharClick(Sender: TObject);
@@ -81,7 +82,7 @@ implementation
 
 {$R *.dfm}
 
-uses Winapi.Windows, Correios;
+uses Winapi.Windows, Correios, System.Threading;
 
 procedure TformEncomenda.btAlterarClick(Sender: TObject);
 begin
@@ -196,7 +197,7 @@ begin
         dmDados.FDAuxiliar.Close;
         dmDados.FDAuxiliar.SQL.Clear;
         dmDados.FDAuxiliar.SQL.Add('insert into ENCOMENDA (CODIGO, NOME, CATEGORIA, EMPRESA, STATUS, DATA)');
-        dmDados.FDAuxiliar.SQL.Add('values(:vCODIGO, :vNOME, :vCATEGORIA, :vEMPRESA, vSTATUS, vDATA)');
+        dmDados.FDAuxiliar.SQL.Add('values(:vCODIGO, :vNOME, :vCATEGORIA, :vEMPRESA, :vSTATUS, :vDATA)');
 
         dmDados.FDAuxiliar.ParamByName('vCODIGO').Value := edCod.Text;
         dmDados.FDAuxiliar.ParamByName('vNOME').Value := edNome.Text;
@@ -211,7 +212,7 @@ begin
 
         xIncluindo := False;
 
-        LocalizaId;
+//        LocalizaId;
 
         PnPrincipal.ActiveCard := CardPesquisa;// ativa card pesqisa
 
@@ -248,13 +249,15 @@ begin
 
         dmDados.FDAuxiliar.Close;
         dmDados.FDAuxiliar.SQL.Clear;
-        dmDados.FDAuxiliar.SQL.Add('insert into ENCOMENDA (CODIGO, NOME, CATEGORIA, EMPRESA)');
-        dmDados.FDAuxiliar.SQL.Add('values(:vCODIGO, :vNOME, :vCATEGORIA, :vEMPRESA)');
+        dmDados.FDAuxiliar.SQL.Add('insert into ENCOMENDA (CODIGO, NOME, CATEGORIA, EMPRESA, STATUS, DATA)');
+        dmDados.FDAuxiliar.SQL.Add('values(:vCODIGO, :vNOME, :vCATEGORIA, :vEMPRESA, :vSTATUS, :vDATA)');
 
         dmDados.FDAuxiliar.ParamByName('vCODIGO').Value := edCod.Text;
         dmDados.FDAuxiliar.ParamByName('vNOME').Value := edNome.Text;
         dmDados.FDAuxiliar.ParamByName('vCATEGORIA').Value :=  cbCategoria.Text;
         dmDados.FDAuxiliar.ParamByName('vEMPRESA').Value := edVendedor.Text;
+        dmDados.FDAuxiliar.ParamByName('vSTATUS').Value :=  'N';
+        dmDados.FDAuxiliar.ParamByName('vDATA').Value := now;
 
         dmDados.FDAuxiliar.ExecSQL( xErro );
         dmDados.FDEncomenda.Close;
@@ -262,7 +265,7 @@ begin
 
           xCopia := False;
 
-          LocalizaId;
+//          LocalizaId;
 
           PnPrincipal.ActiveCard := CardPesquisa;// ativa card pesqisa
 
@@ -345,10 +348,11 @@ begin
     SQL.Add(')order by ID desc');
     ParamByName('vSTATUS').AsString := xStaus;
     Open;
+
   end;
 
 
-  if dmDados.FDEncomendaSTATUS.value = 'S' then
+  if (dmDados.FDEncomendaSTATUS.value = 'S') or (dmDados.FDEncomenda.IsEmpty) then
   begin
    btAtualiza.visible := False;
    Exit;
@@ -401,14 +405,27 @@ end;
 procedure TformEncomenda.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-
-  if  dmDados.xAtivaBuscaCodigo = True then
+  TTask.Run(procedure
   begin
-    formCOrreios.edCodRestreio.Text := dmDados.FDEncomendaCODIGO.Value;
-    formCorreios.btBuscarClick(sender);
-    dmDados.xAtivaBuscaCodigo := False;
-    Exit;
-  end;
+//    Sleep(10000);
+    TThread.Synchronize(TThread.CurrentThread,
+    procedure
+    begin
+      if  dmDados.xAtivaBuscaCodigo = True then
+      begin
+        formCOrreios.edCodRestreio.Text := dmDados.FDEncomendaCODIGO.Value;
+        formCorreios.btBuscarClick(sender);
+        dmDados.xAtivaBuscaCodigo := False;
+        Exit;
+      end;
+
+    end);
+
+
+
+  end);
+
+
 
 end;
 
